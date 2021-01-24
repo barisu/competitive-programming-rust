@@ -12,14 +12,16 @@ impl UnionFind {
     }
 
     pub fn unite( &mut self ,a :usize ,b : usize) {
-        let pa = findParent(a);
-        let pb = findParent(b);
-
+        let pa = self.findParent(a);
+        let pb = self.findParent(b);
+        if pa == pb{
+            return 
+        }
         let (large,small) = if pa < pb {
             (pb,pa)
         } else {
             (pa,pb)
-        }
+        };
 
 
         self.parents[large] = small;
